@@ -1,0 +1,35 @@
+-- For my first SQL project I created a sporting goods store database showing types of products, pricing, quantity and brand
+
+CREATE TABLE barr_athletics (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, quantity INTEGER, brand TEXT);
+
+-- Inserting names and values into the table
+
+INSERT INTO barr_athletics VALUES (1, "Shoes", 75, 20, "NIKE");
+INSERT INTO barr_athletics VALUES (2, "Shirts", 25, 30, "ADIDAS");
+INSERT INTO barr_athletics VALUES (3, "Shorts", 30, 35, "NIKE");
+INSERT INTO barr_athletics VALUES (4, "Socks", 12, 40, "UNDER ARMOUR");
+INSERT INTO barr_athletics VALUES (5, "Underwear", 15, 40, "ADIDAS");
+INSERT INTO barr_athletics VALUES (6, "Pads", 80, 15, "RIDDELL");
+INSERT INTO barr_athletics VALUES (7, "Footballs", 50, 22, "WILSON");
+INSERT INTO barr_athletics VALUES (8, "Pants", 60, 35, "UNDER ARMOUR");
+INSERT INTO barr_athletics VALUES (9, "Helmets", 90, 20, "RIDDELL");
+
+-- Selecting the whole table
+
+SELECT * FROM barr_athletics;
+
+-- Ordering the whole table by price
+
+SELECT * FROM barr_athletics ORDER BY price;
+
+-- Taking the sum of all products in the store
+
+SELECT SUM(quantity) FROM barr_athletics;
+
+-- Identifying which IDs are Nike brand
+
+SELECT id, brand FROM barr_athletics WHERE brand = 'NIKE';
+
+-- Identifying all brands that have more than 35 items
+
+SELECT * FROM barr_athletics WHERE quantity >= 35;
