@@ -1,0 +1,69 @@
+/* Creating tables of information for famous artists */
+ 
+CREATE TABLE singers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    genre TEXT,
+    age INTEGER);
+
+INSERT INTO singers (name, genre, age) VALUES ("Drake", "Hip-Hop", 36);
+INSERT INTO singers (name, genre, age) VALUES ("Luke Bryan", "Country", 46);
+INSERT INTO singers (name, genre, age) VALUES ("Taylor Swift", "Pop", 32);
+INSERT INTO singers (name, genre, age) VALUES ("The Weekend", "R&B", 32);
+INSERT INTO singers (name, genre, age) VALUES ("Dua Lipa", "Pop", 27);
+INSERT INTO singers (name, genre, age) VALUES ("Travis Scott", "Hip-Hop", 31);
+INSERT INTO singers (name, genre, age) VALUES ("Morgan Wallen", "Country", 29);
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist_id INTEGER,
+    best_song TEXT,
+    best_album TEXT);
+    
+INSERT INTO songs (artist_id, best_song, best_album) VALUES (1,"One Dance", "Views");
+INSERT INTO songs (artist_id, best_song, best_album) VALUES (2, "Crash My Party", "Crash My Party");
+INSERT INTO songs (artist_id, best_song, best_album) VALUES (3, "Shake It Off", "1989");
+INSERT INTO songs (artist_id, best_song, best_album) VALUES (4, "Blinding Lights", "House of Balloons");
+INSERT INTO songs (artist_id, best_song, best_album) VALUES (5, "One Kiss", "Future Nostalgia");
+INSERT INTO songs (artist_id, best_song, best_album) VALUES (6, "Goosebumps", "Astroworld");
+INSERT INTO songs (artist_id, best_song, best_album) VALUES (7, "Whiskey Glasses", "Dangerous: The Double Album");
+
+CREATE TABLE origin (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    country TEXT,
+    first_job TEXT);
+    
+INSERT INTO origin (country, first_job) VALUES ("Canada", "Actor");
+INSERT INTO origin (country, first_job) VALUES ("USA", "Farmer");
+INSERT INTO origin (country, first_job) VALUES ("USA", "Miscellaneous");
+INSERT INTO origin (country, first_job) VALUES ("Canada", "Clothing Store");
+INSERT INTO origin (country, first_job) VALUES ("UK", "Model");
+INSERT INTO origin (country, first_job) VALUES ("USA", "Producer");
+INSERT INTO origin (country, first_job) VALUES ("USA", "Landscaper");
+
+/* Joining singers and songs tables to show each artist and their genre */
+
+SELECT singers.name AS "Artist", singers.genre AS "Genre"
+    FROM singers
+    JOIN songs
+    ON singers.id = songs.artist_id;
+
+/* Joining singers and songs tables to show each artists best songs and albums */
+
+SELECT singers.name AS "Artist", songs.best_song AS "Best Song", songs.best_album "Best Album"
+    FROM singers
+    JOIN songs
+    ON singers.id = songs.artist_id;
+    
+/* Joining singers and origin tables to show each artist and the country they are from */
+    
+SELECT singers.name AS "Artist", origin.country AS "Country"
+    FROM singers
+    JOIN origin
+    ON singers.id = origin.id;
+    
+/* Joining singers and origin tables to show the first job each artist had */
+    
+SELECT singers.name AS "Artist", origin.first_job AS "First Job"
+    FROM singers
+    JOIN origin
+    ON singers.id = origin.id;
